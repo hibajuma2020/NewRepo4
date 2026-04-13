@@ -6,7 +6,7 @@ namespace Practice1
 {
     internal class Program
     {
-        // بيانات المنتجات (Practice 15)
+        
         static string[] products = { "Laptop", "Phone", "Tablet", "Monitor", "Keyboard", "Mouse", "Headset", "Webcam", "Speaker", "Router" };
         static double[] prices = { 450, 180, 220, 310, 35, 25, 75, 55, 90, 65 };
 
