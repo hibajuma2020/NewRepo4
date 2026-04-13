@@ -6,141 +6,6 @@ namespace Practice1
 {
     internal class Program
     {
-        // Doctor Arrays
-        static string[] doctorNames = new string[50];
-        static int[] doctorAvailableSlots = new int[50];
-        static int[] doctorVisitCount = new int[50];
-
-        static int lastDoctorIndex = -1;
-
-        static string[] products = { "Laptop", "Phone", "Tablet", "Monitor", "Keyboard", "Mouse", "Headset", "Webcam", "Speaker", "Router" };
-        static double[] prices = { 450, 180, 220, 310, 35, 25, 75, 55, 90, 65 };
-
-        static void Main(string[] args)
-        {
-
-            // Seed Doctors
-
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Noor";
-            doctorAvailableSlots[lastDoctorIndex] = 5;
-            doctorVisitCount[lastDoctorIndex] = 0;
-
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Salem";
-            doctorAvailableSlots[lastDoctorIndex] = 3;
-            doctorVisitCount[lastDoctorIndex] = 0;
-
-            lastDoctorIndex++;
-            doctorNames[lastDoctorIndex] = "Dr. Hana";
-            doctorAvailableSlots[lastDoctorIndex] = 8;
-            doctorVisitCount[lastDoctorIndex] = 0;
-
-            bool exit = false;
-
-            while (!exit)
-            {
-                Console.WriteLine("1.Today's Greeting");
-                Console.WriteLine("2.Star Border");
-                Console.WriteLine("3.Random Quote");
-                Console.WriteLine("4.Invoice Header");
-                Console.WriteLine("5.Number Pattern");
-                Console.WriteLine("6.Word Stats");
-                Console.WriteLine("7.Temperature Converter");
-                Console.WriteLine("8.Password Strength");
-                Console.WriteLine("9.Statistics");
-                Console.WriteLine("10.Session Info");
-                Console.WriteLine("11.Magic Number");
-                Console.WriteLine("12.Day Message");
-                Console.WriteLine("13.Discount");
-                Console.WriteLine("14.Report Header");
-                Console.WriteLine("15.Product Search");
-                Console.WriteLine("16. Add Doctor");
-                Console.WriteLine("17. Doctor Salary Report");
-                Console.WriteLine("0.Exit");
-
-
-                int choice = int.Parse(Console.ReadLine());
-
-                switch (choice)
-                {
-                    case 1:
-                        PrintDailyGreeting();
-                        break;
-
-                    case 2:
-                        PrintStarBorder();
-                        break;
-
-                    case 3:
-                        PrintRandomQuote();
-                        break;
-
-                    case 4:
-                        Console.Write("Enter name: ");
-                        string name = Console.ReadLine();
-
-                        Console.Write("Enter date: ");
-                        string date = Console.ReadLine();
-
-                        PrintInvoiceHeader(name, date);
-                        break;
-
-                    case 5:
-                        PrintNumberPattern(4);
-                        break;
-
-                    case 6:
-                        PrintWordStats("Hello world from C sharp");
-                        break;
-
-                    case 7:
-                        Console.WriteLine(ConvertTemperature(30, "C", "F"));
-                        break;
-
-                    case 8:
-                        Console.WriteLine(GetPasswordStrength("Abc@1234"));
-                        break;
-
-                    case 9:
-                        Console.WriteLine(CalculateStats(new int[] { 1, 2, 3, 4, 5 }));
-                        break;
-
-                    case 10:
-                        Console.WriteLine(GetSessionInfo());
-                        break;
-
-                    case 11:
-                        Console.WriteLine(GenerateMagicNumber());
-                        break;
-
-                    case 12:
-                        Console.WriteLine(GetDayMessage());
-                        break;
-
-                    case 13:
-                        Console.WriteLine(CalculateDiscount(100, 10));
-                        Console.WriteLine(CalculateDiscount(100, 10, 5));
-                        break;
-
-                    case 14:
-                        PrintReportHeader("MONTHLY REPORT");
-                        PrintReportHeader("CUSTOM", 60, '-');
-                        break;
-
-                    case 15:
-                        SearchProducts("phone");
-                        SearchProducts(50, 200);
-                        SearchProducts("top", 300);
-                        break;
-
-                    case 16:
-                        exit = true;
-                        break;
-                }
-            }
-        }
-
         // 1
         static void PrintDailyGreeting()
         {
@@ -149,6 +14,7 @@ namespace Practice1
             Console.WriteLine("Time: " + DateTime.Now.ToString("hh:mm tt"));
             Console.WriteLine("Let's code something great today!");
         }
+
 
         // 2
         static void PrintStarBorder()
@@ -466,6 +332,143 @@ namespace Practice1
                     doctorNames[maxIndex] + " — " + maxSalary + " OMR");
 
                 break;
+                // Doctor Arrays
+                static string[] doctorNames = new string[50];
+        static int[] doctorAvailableSlots = new int[50];
+        static int[] doctorVisitCount = new int[50];
+
+        static int lastDoctorIndex = -1;
+
+        static string[] products = { "Laptop", "Phone", "Tablet", "Monitor", "Keyboard", "Mouse", "Headset", "Webcam", "Speaker", "Router" };
+        static double[] prices = { 450, 180, 220, 310, 35, 25, 75, 55, 90, 65 };
+
+        static void Main(string[] args)
+        {
+
+            // Seed Doctors
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Noor";
+            doctorAvailableSlots[lastDoctorIndex] = 5;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Salem";
+            doctorAvailableSlots[lastDoctorIndex] = 3;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Hana";
+            doctorAvailableSlots[lastDoctorIndex] = 8;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
+            bool exit = false;
+
+            while (!exit)
+            {
+                Console.WriteLine("1.Today's Greeting");
+                Console.WriteLine("2.Star Border");
+                Console.WriteLine("3.Random Quote");
+                Console.WriteLine("4.Invoice Header");
+                Console.WriteLine("5.Number Pattern");
+                Console.WriteLine("6.Word Stats");
+                Console.WriteLine("7.Temperature Converter");
+                Console.WriteLine("8.Password Strength");
+                Console.WriteLine("9.Statistics");
+                Console.WriteLine("10.Session Info");
+                Console.WriteLine("11.Magic Number");
+                Console.WriteLine("12.Day Message");
+                Console.WriteLine("13.Discount");
+                Console.WriteLine("14.Report Header");
+                Console.WriteLine("15.Product Search");
+                Console.WriteLine("16. Add Doctor");
+                Console.WriteLine("17. Doctor Salary Report");
+                Console.WriteLine("0.Exit");
+
+
+                int choice = int.Parse(Console.ReadLine());
+
+                switch (choice)
+                {
+                    case 1:
+                        PrintDailyGreeting();
+                        break;
+
+                    case 2:
+                        PrintStarBorder();
+                        break;
+
+                    case 3:
+                        PrintRandomQuote();
+                        break;
+
+                    case 4:
+                        Console.Write("Enter name: ");
+                        string name = Console.ReadLine();
+
+                        Console.Write("Enter date: ");
+                        string date = Console.ReadLine();
+
+                        PrintInvoiceHeader(name, date);
+                        break;
+
+                    case 5:
+                        PrintNumberPattern(4);
+                        break;
+
+                    case 6:
+                        PrintWordStats("Hello world from C sharp");
+                        break;
+
+                    case 7:
+                        Console.WriteLine(ConvertTemperature(30, "C", "F"));
+                        break;
+
+                    case 8:
+                        Console.WriteLine(GetPasswordStrength("Abc@1234"));
+                        break;
+
+                    case 9:
+                        Console.WriteLine(CalculateStats(new int[] { 1, 2, 3, 4, 5 }));
+                        break;
+
+                    case 10:
+                        Console.WriteLine(GetSessionInfo());
+                        break;
+
+                    case 11:
+                        Console.WriteLine(GenerateMagicNumber());
+                        break;
+
+                    case 12:
+                        Console.WriteLine(GetDayMessage());
+                        break;
+
+                    case 13:
+                        Console.WriteLine(CalculateDiscount(100, 10));
+                        Console.WriteLine(CalculateDiscount(100, 10, 5));
+                        break;
+
+                    case 14:
+                        PrintReportHeader("MONTHLY REPORT");
+                        PrintReportHeader("CUSTOM", 60, '-');
+                        break;
+
+                    case 15:
+                        SearchProducts("phone");
+                        SearchProducts(50, 200);
+                        SearchProducts("top", 300);
+                        break;
+
+                    case 16:
+                        exit = true;
+                        break;
+                }
+            }
+        }
+
+      
+
             }
     }
 }
