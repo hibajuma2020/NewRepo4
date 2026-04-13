@@ -6,12 +6,36 @@ namespace Practice1
 {
     internal class Program
     {
-        
+        // Doctor Arrays
+        static string[] doctorNames = new string[50];
+        static int[] doctorAvailableSlots = new int[50];
+        static int[] doctorVisitCount = new int[50];
+
+        static int lastDoctorIndex = -1;
+
         static string[] products = { "Laptop", "Phone", "Tablet", "Monitor", "Keyboard", "Mouse", "Headset", "Webcam", "Speaker", "Router" };
         static double[] prices = { 450, 180, 220, 310, 35, 25, 75, 55, 90, 65 };
 
         static void Main(string[] args)
         {
+
+            // Seed Doctors
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Noor";
+            doctorAvailableSlots[lastDoctorIndex] = 5;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Salem";
+            doctorAvailableSlots[lastDoctorIndex] = 3;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
+            lastDoctorIndex++;
+            doctorNames[lastDoctorIndex] = "Dr. Hana";
+            doctorAvailableSlots[lastDoctorIndex] = 8;
+            doctorVisitCount[lastDoctorIndex] = 0;
+
             bool exit = false;
 
             while (!exit)
@@ -31,7 +55,10 @@ namespace Practice1
                 Console.WriteLine("13.Discount");
                 Console.WriteLine("14.Report Header");
                 Console.WriteLine("15.Product Search");
+                Console.WriteLine("16. Add Doctor");
+                Console.WriteLine("17. Doctor Salary Report");
                 Console.WriteLine("0.Exit");
+
 
                 int choice = int.Parse(Console.ReadLine());
 
@@ -358,6 +385,87 @@ namespace Practice1
             for (int i = 0; i < products.Length; i++)
                 if (products[i].ToLower().Contains(keyword.ToLower()) && prices[i] <= max)
                     Console.WriteLine(products[i] + " - " + prices[i] + " OMR");
-        }
+
+            case 16:
+
+                Console.Write("Enter Doctor Name: ");
+                string docName = Console.ReadLine().Trim();
+
+                Console.Write("Enter Available Slots: ");
+                string slotsInput = Console.ReadLine();
+
+                int slots;
+                bool isValid = int.TryParse(slotsInput, out slots);
+
+                // Check slot validity
+                if (!isValid || slots < 1)
+                {
+                    Console.WriteLine("Invalid slot count. Doctor not registered.");
+                    break;
+                }
+
+                // Check duplicate
+                bool exists = false;
+                for (int i = 0; i <= lastDoctorIndex; i++)
+                {
+                    if (doctorNames[i].ToLower() == docName.ToLower())
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (exists)
+                {
+                    Console.WriteLine("Doctor already exists in the system.");
+                    break;
+                }
+
+                // Add doctor
+                lastDoctorIndex++;
+
+                doctorNames[lastDoctorIndex] = docName;
+                doctorAvailableSlots[lastDoctorIndex] = slots;
+                doctorVisitCount[lastDoctorIndex] = 0;
+
+                Console.WriteLine($"Doctor {docName} registered successfully with {slots} available slots.");
+
+                break;
+
+
+            case 17:
+
+                if (lastDoctorIndex == -1)
+                {
+                    Console.WriteLine("No doctors registered in the system.");
+                    break;
+                }
+
+                double maxSalary = 0;
+                int maxIndex = 0;
+
+                for (int i = 0; i <= lastDoctorIndex; i++)
+                {
+                    double salary = 300 + (doctorVisitCount[i] * 15);
+                    salary = Math.Round(salary, 2);
+
+                    Console.WriteLine(doctorNames[i] +
+                        " | Visits: " + doctorVisitCount[i] +
+                        " | Available Slots: " + doctorAvailableSlots[i] +
+                        " | Salary: " + salary + " OMR");
+
+                    if (salary > maxSalary)
+                    {
+                        maxSalary = salary;
+                        maxIndex = i;
+                    }
+                }
+
+                Console.WriteLine("---------------------------");
+                Console.WriteLine("Highest earning doctor: " +
+                    doctorNames[maxIndex] + " — " + maxSalary + " OMR");
+
+                break;
+            }
     }
 }
